@@ -142,6 +142,11 @@
     <Compile Include="Event\FortTargetEvent.cs" />
     <Compile Include="Event\FortFailedEvent.cs" />
     <Compile Include="Event\FortUsedEvent.cs" />
+    <Compile Include="Event\Gym\GymDeployEvent.cs" />
+    <Compile Include="Event\Gym\GymDetailInfoEvent.cs" />
+    <Compile Include="Event\Gym\GymListEvent.cs" />
+    <Compile Include="Event\Gym\GymTeamJoinEvent.cs" />
+    <Compile Include="Event\Gym\GymWalkToTargetEvent.cs" />
     <Compile Include="Event\HumanWalkingEvent.cs" />
     <Compile Include="Event\HumanWalkSnipeEvent.cs" />
     <Compile Include="Event\InventoryListEvent.cs" />
@@ -199,6 +204,7 @@
     <Compile Include="Model\Settings\GlobalSettings.cs" />
     <Compile Include="Model\Settings\GoogleWalkConfig.cs" />
     <Compile Include="Model\Settings\GpxConfig.cs" />
+    <Compile Include="Model\Settings\GymConfig.cs" />
     <Compile Include="Model\Settings\HumanWalkSnipeConfig.cs" />
     <Compile Include="Model\Settings\HumanWalkSnipeFilter.cs" />
     <Compile Include="Model\Settings\ItemRecycleFilter.cs" />
@@ -219,7 +225,9 @@
     <Compile Include="Model\Settings\UpdateConfig.cs" />
     <Compile Include="Model\Settings\UpgradeFilter.cs" />
     <Compile Include="Model\Settings\WebsocketsConfig.cs" />
+    <Compile Include="Model\Settings\MapzenWalkConfig.cs" />
     <Compile Include="Model\Settings\YoursWalkConfig.cs" />
+    <Compile Include="Model\Mapzen\MapzenWalk.cs" />
     <Compile Include="Model\Yours\YoursWalk.cs" />
     <Compile Include="Navigation.cs" />
     <Compile Include="PoGoUtils\PokemonInfo.cs" />
@@ -227,11 +235,15 @@
     <Compile Include="Service\BotService.cs" />
     <Compile Include="Service\Elevation\BaseElevationService.cs" />
     <Compile Include="Service\Elevation\ElevationService.cs" />
+    <Compile Include="Service\Elevation\IElevationService.cs" />
+    <Compile Include="Service\Elevation\MapzenElevationService.cs" />
+    <Compile Include="Service\Elevation\RandomElevationService.cs" />
     <Compile Include="Service\GoogleDirectionsService.cs" />
     <Compile Include="Service\Elevation\GoogleElevationService.cs" />
     <Compile Include="Service\Elevation\MapQuestElevationService.cs" />
     <Compile Include="Service\TelegramService.cs" />
     <Compile Include="Model\Settings\LogicSettings.cs" />
+    <Compile Include="Service\MapzenDirectionsService.cs" />
     <Compile Include="Service\YoursDirectionsService.cs" />
     <Compile Include="State\CheckTosState.cs" />
     <Compile Include="State\SessionStats.cs" />
@@ -241,6 +253,7 @@
     <Compile Include="Strategies\Walk\HumanPathWalkingStrategy.cs" />
     <Compile Include="Strategies\Walk\HumanStrategy.cs" />
     <Compile Include="Strategies\Walk\IWalkStrategy.cs" />
+    <Compile Include="Strategies\Walk\MapzenNavigationStrategy.cs" />
     <Compile Include="Strategies\Walk\YoursNavigationStrategy.cs" />
     <Compile Include="Tasks\EggsListTask.cs" />
     <Compile Include="Tasks\EvolveSpecificPokemonTask.cs" />
@@ -248,6 +261,9 @@
     <Compile Include="Tasks\GetPokeDexCount.cs" />
     <Compile Include="Tasks\HumanRandomActionTask.cs" />
     <Compile Include="Tasks\HumanWalkSnipeTask.cs" />
+    <Compile Include="Tasks\HumanWalkSnipeTask.FastPokemap.cs">
+      <DependentUpon>HumanWalkSnipeTask.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tasks\HumanWalkSnipeTask.Pokecrew.cs">
       <DependentUpon>HumanWalkSnipeTask.cs</DependentUpon>
     </Compile>
@@ -304,6 +320,7 @@
     <Compile Include="Tasks\TransferPokemonTask.cs" />
     <Compile Include="Tasks\TransferWeakPokemonTask.cs" />
     <Compile Include="Tasks\UseIncenseConstantlyTask.cs" />
+    <Compile Include="Tasks\UseGymBattleTask.cs" />
     <Compile Include="Tasks\UseIncubatorsTask.cs" />
     <Compile Include="Tasks\UseLuckyEggConstantlyTask.cs" />
     <Compile Include="Tasks\UseNearbyPokestopsTask.cs" />
@@ -328,7 +345,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <Compile Include="Tasks\HumanWalkSnipeTask.FastPokemap.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FeroxRev\PokemonGo.RocketAPI.csproj">

@@ -88,12 +88,17 @@ namespace PoGo.NecroBot.Logic.Tasks
                                 //Catch Incense Pokemon
                                 await CatchIncensePokemonsTask.Execute(session, cancellationToken);
                                 await UseNearbyPokestopsTask.Execute(session, cancellationToken);
-                                return true;
                             },
                             session,
                             cancellationToken);
 
                         await eggWalker.ApplyDistance(distance, cancellationToken);
+
+                        // Return to FarmState/StateMachine if we have reached both user defined limits
+                        if ((UseNearbyPokestopsTask._pokestopLimitReached || UseNearbyPokestopsTask._pokestopTimerReached) &&
+                            (CatchPokemonTask._catchPokemonLimitReached || CatchPokemonTask._catchPokemonTimerReached))
+                            return;
+
                     } //end trkpts
                     _resumeTrackPt = 0;
                 } //end trksegs
